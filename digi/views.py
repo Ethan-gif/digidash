@@ -108,7 +108,7 @@ def add():
 def delete(id):
       photos = Photo.query.filter_by(id=id).first()
       print(photos)
-      os.remove(os.getcwd()+ "\\digicamsite\\digi\\static\\imgs\\"+ secure_filename(photos.image_name))
+      os.remove(os.getcwd()+ "\\digi\\static\\imgs\\"+ secure_filename(photos.image_name))
       db.session.delete(photos)
       db.session.commit()  
       return redirect("/0")
@@ -125,7 +125,7 @@ def create():
             # add file names to file db and then save files to server
             uploaded_files.save(
                 os.path.join(
-                os.getcwd() + "\\digicamsite\\digi\\static\\imgs",
+                os.getcwd() + "\\digi\\static\\imgs",
                 secure_filename(uploaded_files.filename),
                     )
                 )
