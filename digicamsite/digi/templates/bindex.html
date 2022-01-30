@@ -20,9 +20,7 @@
       
         <div class="card-body">
          {%set url='imgs/'+photo.image_name%}
-         <img class="card-img-top" style=" width: 100%;
-         height:20rem ;
-        " src="{{url_for('static',filename=url)}}" alt="{{photo.name}}">
+         <img class="card-img-top" style=" width: 100%; height: 17rem; object-fit: cover;" src="{{url_for('static',filename=url)}}" alt="{{photo.name}}">
    
       </div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{list1[0]}}">View Photo
@@ -55,28 +53,33 @@
       </div>
 
       <footer class="taskbar"style="left:0; right:0">
-        <div class="row" style="margin-right: 0px; ">
-            <div class="col-8">
-                <a href="https://github.com/AlexBSoft/win95.css" class="btn start-button"><img src="assets/icons/users-1.png" class="icon-16">Theme</a>
-                <a href="https://github.com/AlexBSoft/win95.css" class="btn start-button"><img src="assets/icons/directory_folder_options-5.png" class="icon-16"> GitHub</a>
-                
+        <div class="container-fluid text-center text-md-left">
 
+          <!-- Grid row -->
+          <div class="row">
+      
+            <!-- Grid column -->
+            <div class="col-md-1 mt-md-0 mt-3">
+      
+                <a href="https://github.com/AlexBSoft/win95.css" class="btn start-button"><img src="{{ url_for('static',filename='styles/icons/computer_win_lock-1.png')}}" class="icon-16">Theme</a>
+                <a href="https://github.com/Ethan-gif/digidash/tree/main/digicamsite" class="btn start-button"><img src="{{ url_for('static',filename='styles/icons/directory_folder_options-5.png')}}" class="icon-16"> GitHub</a>
+                
+              </div>
+              <div class="col-md-10 mb-md-0 mb-3">
           {%if listing.page|int >= 1%}
          
       
-            <a class="btn start-button  "style="margin-left: 53rem;" href="/{{listing.page|int-1}}">Prev</a></li>
-            <a class="btn start-button  "style="margin-left:3rem;" href="/{{listing.page|int+1}}">Next</a>
+            <a class="btn start-button  " href="/{{listing.page|int-1}}">Prev</a></li>
+            <a class="btn start-button  " href="/{{listing.page|int+1}}">Next</a>
         
             {%else%}
-            <a class="btn start-button  "style="margin-left:56rem;" href="/{{listing.page|int+1}}">Next</a>
+            <a class="btn start-button  " href="/{{listing.page|int+1}}">Next</a>
           {%endif%}
-          
+          </div>
     
            
-    
-        </ul>
-              </div>
-            <div class="col-4 time">By LATO</div>
+
+          
         </div>
 
     </footer>

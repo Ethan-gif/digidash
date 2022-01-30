@@ -11,6 +11,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 from datetime import datetime
+import random
 from werkzeug.utils import secure_filename
 
 #this file sets what the index route of the web application will be
@@ -40,7 +41,9 @@ def index(pagenum):
     print((listing.page))
     return render_template("bindex.html",listing=PageResult(photos,pagenum))
    
-
+@mainbp.route("/")
+def reroute():
+    return redirect("/0")
 class PageResult:
    def __init__(self, data, page = 1, number = 21):
      self.__dict__ = dict(zip(['data', 'page', 'number'], [data, page, number]))
@@ -55,7 +58,7 @@ class PageResult:
 @check_pw
 def showalladmin(pagenum):
     photos = Photo.query.order_by(desc(Photo.creation_date)).all()
-    #random.shuffle(photos)
+    random.shuffle(photos)
     listing=PageResult(photos,pagenum)
     print((listing.page))
     return render_template("adminindex.html",listing=PageResult(photos,pagenum))
