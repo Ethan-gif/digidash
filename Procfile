@@ -1,0 +1,1 @@
+web: gunicorn 'digi:create_app()'
