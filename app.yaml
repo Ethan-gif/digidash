@@ -13,7 +13,14 @@
 # limitations under the License.
 
 runtime: python39
+entrypoint: gunicorn -b :$PORT main:app
 
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 3
+  memory_gb: 1
+  disk_size_gb: 10
 handlers:
   # This configures Google App Engine to serve the files in the app's static
   # directory.
