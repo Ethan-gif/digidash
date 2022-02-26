@@ -2,6 +2,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+import os
 
 db=SQLAlchemy(session_options={"autoflush":False})
 #create a function that creates a web application
@@ -22,7 +23,7 @@ def create_app():
     app.debug=True
     app.secret_key='dafdfsfgdhh'
     #config
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///dotpoints.sqlite'
+    app.config['SQLALCHEMY_DATABASE_URI']=os.environ['DATABASE_URL']
     #init
     db.init_app(app)
     
