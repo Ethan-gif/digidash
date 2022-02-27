@@ -23,7 +23,10 @@ def create_app():
     app.debug=True
     app.secret_key='dafdfsfgdhh'
     #config
-    app.config['SQLALCHEMY_DATABASE_URI']=os.environ['DATABASE_URL']
+    uri = os.getenv("DATABASE_URL")  # or other relevant config var
+    if uri and uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI']=uri
     #init
     db.init_app(app)
     
